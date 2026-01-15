@@ -1,0 +1,263 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@300;400;600;700&display=swap");
+
+:root {
+  --bg: #f7f3ee;
+  --bg-alt: #eef4f1;
+  --ink: #1c2427;
+  --muted: #5f6c72;
+  --brand: #1d6d5c;
+  --accent: #e09a4b;
+  --card: #ffffff;
+  --shadow: rgba(28, 36, 39, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Manrope", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: radial-gradient(1200px 600px at 15% -10%, #e5f1ec, transparent 70%),
+    radial-gradient(900px 600px at 90% 15%, #f4dfcb, transparent 60%),
+    linear-gradient(135deg, var(--bg), var(--bg-alt));
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  padding: 56px 0 40px;
+  display: grid;
+  gap: 32px;
+}
+
+.hero {
+  background: var(--card);
+  padding: 36px;
+  border-radius: 24px;
+  box-shadow: 0 24px 60px var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  right: -120px;
+  top: -100px;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, #cfe6df, transparent 70%);
+  opacity: 0.8;
+}
+
+.hero__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hero__badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--brand), #2f9b83);
+  display: grid;
+  place-items: center;
+  color: white;
+  font-weight: 700;
+}
+
+.hero h1 {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 1.05;
+  margin: 18px 0 12px;
+}
+
+.hero p {
+  color: var(--muted);
+  max-width: 520px;
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+
+.hero__actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  border: none;
+  border-radius: 999px;
+  padding: 12px 22px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, var(--brand), #2f9b83);
+  color: #fff;
+  box-shadow: 0 18px 32px rgba(29, 109, 92, 0.3);
+}
+
+.btn.ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid #c7d1cc;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.card {
+  background: var(--card);
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 18px 40px rgba(28, 36, 39, 0.08);
+  animation: floatIn 0.6s ease both;
+}
+
+.card h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.panel {
+  background: linear-gradient(135deg, #ffffff, #f7efe6);
+  border-radius: 20px;
+  padding: 26px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  box-shadow: 0 18px 40px rgba(28, 36, 39, 0.1);
+}
+
+.panel h3 {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+.panel p {
+  color: var(--muted);
+}
+
+.login {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 28px;
+  display: grid;
+  gap: 24px;
+  box-shadow: 0 18px 40px rgba(28, 36, 39, 0.1);
+}
+
+.login__intro h2 {
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+
+.login__intro p {
+  color: var(--muted);
+}
+
+.login__form {
+  display: grid;
+  gap: 14px;
+}
+
+.login__form label {
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.login__form input {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #d6dde0;
+  background: #fbfcfc;
+  font-size: 15px;
+}
+
+.login__form input:focus {
+  outline: 2px solid #c7dfd8;
+  border-color: #a9c8bf;
+}
+
+.status {
+  min-height: 20px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.status.ok {
+  color: #146248;
+}
+
+.status.error {
+  color: #9b3c2a;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 720px) {
+  .panel {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer {
+    flex-direction: column;
+    gap: 6px;
+  }
+}

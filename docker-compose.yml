@@ -1,0 +1,42 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: cliniq-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: cliniq
+      POSTGRES_USER: cliniq_app
+      POSTGRES_PASSWORD: cliniq_pass
+    volumes:
+      - cliniq_pgdata:/var/lib/postgresql/data
+  app:
+    build: .
+    container_name: cliniq-app
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/cliniq
+      SPRING_DATASOURCE_USERNAME: cliniq_app
+      SPRING_DATASOURCE_PASSWORD: cliniq_pass
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "true"
+  frontend:
+    image: node:20-alpine
+    container_name: cliniq-frontend
+    user: root
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_URL: http://app:8080
+    command: sh -c "npm install --no-audit --no-fund && npm run dev -- --host 0.0.0.0"
+    depends_on:
+      - app
+
+volumes:
+  cliniq_pgdata:
