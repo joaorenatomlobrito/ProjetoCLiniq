@@ -31,3 +31,11 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Gradle / Vite ###
+.gradle/
+.gradle-dist/
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
