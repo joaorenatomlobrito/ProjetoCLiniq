@@ -23,6 +23,8 @@ public class Usuario {
     private String sexo;
     @Column (name = "tipoSanguineo")
     private String tipoSanguineo;
+    @Column(name = "tipoUsuario")
+    private String tipoUsuario;
     @Column (name = "alergias")
     private String alergias;
 

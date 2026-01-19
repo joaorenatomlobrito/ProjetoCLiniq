@@ -17,5 +17,7 @@ public class AnexoExame {
     private String nome;
     @Column (name = "ExameTipo")
     private String tipo;
+    @Column(name = "url")
+    private String url;
     
 }

@@ -7,6 +7,7 @@ public record UsuarioRequest(
         String idade,
         String sexo,
         String tipoSanguineo,
+        String tipoUsuario,
         String alergias
 ) {
 }

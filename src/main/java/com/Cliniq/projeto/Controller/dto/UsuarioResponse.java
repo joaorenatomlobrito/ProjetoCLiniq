@@ -7,6 +7,7 @@ public record UsuarioResponse(
         String idade,
         String sexo,
         String tipoSanguineo,
+        String tipoUsuario,
         String alergias
 ) {
 }

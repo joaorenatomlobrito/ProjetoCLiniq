@@ -8,7 +8,7 @@ export function useLogin() {
   const [message, setMessage] = useState("");
   const [data, setData] = useState<LoginResponse | null>(null);
 
-  async function submit(email: string, senha: string) {
+  async function submit(email: string, senha: string): Promise<LoginResponse> {
     setStatus("loading");
     setMessage("Enviando...");
     setData(null);
@@ -18,6 +18,7 @@ export function useLogin() {
       setData(response);
       setStatus("success");
       setMessage(response.mensagem || "Login realizado.");
+      return response;
     } catch (error) {
       const message =
         typeof (error as { message?: string }).message === "string"
@@ -25,6 +26,7 @@ export function useLogin() {
           : "Falha no login.";
       setStatus("error");
       setMessage(message);
+      throw error;
     }
   }
 
