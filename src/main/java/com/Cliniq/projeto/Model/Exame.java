@@ -15,6 +15,8 @@ public class Exame {
     @ManyToOne
     @JoinColumn(name = "usuario_tb")
     private Usuario usuario;
+    @Column(name = "titulo")
+    private String titulo;
     @Column (name = "tipoExame")
     private String tipoExame;
     @Column (name = "categoria")
@@ -27,6 +29,8 @@ public class Exame {
     private String medico;
     @Column (name = "observacao")
     private String observacoes;
+    @Column(name = "status")
+    private String status;
 
     private LocalDateTime localDateTime;
 }

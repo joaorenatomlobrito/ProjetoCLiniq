@@ -42,6 +42,7 @@ public class UsuarioController {
         usuario.setIdade(request.idade());
         usuario.setSexo(request.sexo());
         usuario.setTipoSanguineo(request.tipoSanguineo());
+        usuario.setTipoUsuario(request.tipoUsuario());
         usuario.setAlergias(request.alergias());
         return usuario;
     }
@@ -54,6 +55,7 @@ public class UsuarioController {
                 usuario.getIdade(),
                 usuario.getSexo(),
                 usuario.getTipoSanguineo(),
+                usuario.getTipoUsuario(),
                 usuario.getAlergias()
         );
     }
