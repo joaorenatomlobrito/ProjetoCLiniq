@@ -46,6 +46,11 @@ public class UsuarioService {
                 () -> new ResourceNotFoundException("Email nao encontrado: " + email));
     }
 
+    public Usuario buscarUsuarioPorId(Long id) {
+        return usuarioRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("Usuario nao encontrado: " + id));
+    }
+
     public void deletarUsuarioPorEmail(String email) {
         usuarioRepository.deleteByEmail(email);
     }

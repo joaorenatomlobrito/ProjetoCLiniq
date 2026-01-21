@@ -68,11 +68,21 @@ export function useExams() {
         if (categoria === "IMAGEM") return { ...base, imagem: base.imagem + 1 };
         return base;
       });
+      let falhaUpload = false;
       if (anexoArquivo) {
-        await uploadAnexo(criado.idExame, anexoArquivo);
+        try {
+          await uploadAnexo(criado.idExame, anexoArquivo);
+        } catch (error) {
+          falhaUpload = true;
+        }
       }
       await carregar(payload.usuarioId);
-      setStatus("idle");
+      if (falhaUpload) {
+        setStatus("error");
+        setMessage("Exame criado, mas falha ao enviar o anexo.");
+      } else {
+        setStatus("idle");
+      }
     } catch (error) {
       const message =
         typeof (error as { message?: string }).message === "string"

@@ -147,7 +147,7 @@ export function ExamForm({ onSubmit, disabled }: ExamFormProps) {
                 }
               }}
             >
-              ×
+              x
             </button>
           </div>
         )}
