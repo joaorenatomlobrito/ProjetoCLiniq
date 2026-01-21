@@ -28,6 +28,11 @@ public class UsuarioController {
         return toResponse(usuarioService.buscarUsuarioPorEmail(email));
     }
 
+    @GetMapping("/{id}")
+    public UsuarioResponse buscarPorId(@PathVariable Long id) {
+        return toResponse(usuarioService.buscarUsuarioPorId(id));
+    }
+
     @DeleteMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletarPorEmail(@RequestParam("email") String email) {

@@ -3,13 +3,14 @@ import { ExameItem } from "../services/examService";
 
 type ExamListProps = {
   items: ExameItem[];
+  emptyMessage?: string;
 };
 
-export function ExamList({ items }: ExamListProps) {
+export function ExamList({ items, emptyMessage = "Nenhum exame cadastrado." }: ExamListProps) {
   if (!Array.isArray(items) || items.length === 0) {
     return (
       <section className="exam-list empty">
-        <p>Nenhum exame cadastrado.</p>
+        <p>{emptyMessage}</p>
       </section>
     );
   }
@@ -22,7 +23,7 @@ export function ExamList({ items }: ExamListProps) {
             <span className="exam-item__category">{item.categoria}</span>
             <h4>{item.titulo}</h4>
             <p className="exam-item__meta">
-              {item.dataExame} · Clinica: {item.clinica || "Nao informado"} · Medico:{" "}
+              {item.dataExame} - Clinica: {item.clinica || "Nao informado"} - Medico:{" "}
               {item.medico || "Nao informado"}
             </p>
           </div>
